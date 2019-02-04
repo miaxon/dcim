@@ -1,0 +1,370 @@
+objectIdentifier synBoolean           1.3.6.1.4.1.1466.115.121.1.7
+objectIdentifier synDirectoryString   1.3.6.1.4.1.1466.115.121.1.15
+objectIdentifier synGeneralizedTime   1.3.6.1.4.1.1466.115.121.1.24
+objectIdentifier synInteger           1.3.6.1.4.1.1466.115.121.1.27
+
+objectIdentifier dcimOID       1.3.6.1.4.1.53407
+objectIdentifier dcimAttribute dcimOID:2.3
+objectIdentifier dcimObject    dcimOID:2.4
+objectIdentifier dcimStruct    dcimObject:1
+objectIdentifier dcimAux       dcimObject:2
+objectIdentifier dcimAbstract  dcimObject:3
+
+
+ attributetype
+ (
+	dcimAttribute:1
+	NAME 'dcimCaption'
+	SYNTAX synDirectoryString{64}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'The Caption property is a short
+ textual description  of the object'
+ )
+
+ attributetype
+ (
+	dcimAttribute:2
+	NAME 'dcimDescription'
+	SYNTAX synDirectoryString
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'The Description property is a long
+ textual description of the object'
+ )
+
+ attributetype
+ (
+	dcimAttribute:3
+	NAME 'dcimInstallDate'
+	SYNTAX synGeneralizedTime
+	SINGLE-VALUE
+	EQUALITY generalizedTimeMatch
+ DESC 'A datetime value indicating when the object was
+ installed. A lack of a value does not indicate that
+ the object is not installed'
+ )
+
+ attributetype
+ (
+	dcimAttribute:4
+	NAME 'dcimName'
+	SYNTAX synDirectoryString{256}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'The Name property defines the label by which the
+ object is known. When subclassed, the Name property
+ can be overridden to be a Key property'
+ )
+
+ attributetype
+ (
+	dcimAttribute:5
+	NAME 'dcimStatus'
+	SYNTAX synDirectoryString{10}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'A short string indicating the current status of the
+ object. Various operational and non-operational
+ statuses are defined'
+ )
+
+ attributetype
+ (
+	dcimAttribute:6
+	NAME 'dcimCreationClassName'
+	SYNTAX synDirectoryString{256}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'Indicates the name of the class
+ or the subclass used in the creation of an instance'
+ )
+
+ attributetype
+ (
+	dcimAttribute:7
+	NAME 'dcimManufactureDate'
+	SYNTAX synGeneralizedTime
+	SINGLE-VALUE
+	EQUALITY generalizedTimeMatch
+ DESC 'Date that this PhysicalElement was manufactured'
+ ) 
+
+ attributetype
+ (
+	dcimAttribute:8
+	NAME 'dcimManufacturer'
+	SYNTAX synDirectoryString{256}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'The name of the organization responsible for
+ producing the PhysicalElement. This may be the entity
+ from whom the Element is purchased, but this is not
+ necessarily true. The latter information is contained
+ in the Vendor property of Product'
+ )
+
+ attributetype
+ (
+	dcimAttribute:9
+	NAME 'dcimModel'
+	SYNTAX synDirectoryString
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'Additional data, beyond that of Tag information, that could be used to
+ identify a Physical Element'
+ )
+
+ attributetype
+ (
+	dcimAttribute:10
+	NAME 'dcimOtherIdentifyingInfo'
+	SYNTAX synDirectoryString{64}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'The name by which the PhysicalElement is generally known'
+ )
+
+ attributetype
+ (
+	dcimAttribute:11
+	NAME 'dcimPartNumber'
+	SYNTAX synDirectoryString{256}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'The part number assigned by the organization
+ responsible for producing or manufacturing the PhysicalElement'
+ )
+
+ attributetype
+ (
+	dcimAttribute:12
+	NAME 'dcimPoweredOn'
+	SYNTAX synBoolean
+	SINGLE-VALUE
+ DESC 'Boolean indicating that the PhysicalElement is
+ powered on (TRUE), or is currently off (FALSE)'
+ )
+
+ attributetype
+ (
+	dcimAttribute:13
+	NAME 'dcimSKU'
+	SYNTAX synDirectoryString{64}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'The stock keeping unit number for this PhysicalElement'
+ )
+
+ attributetype
+ (
+	dcimAttribute:14
+	NAME 'dcimSerialNumber'
+	SYNTAX synDirectoryString{64}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'A manufacturer-allocated number used to identify the Physical Element'
+ )
+
+ attributetype
+ (
+	dcimAttribute:15
+	NAME 'dcimTag'
+	SYNTAX synDirectoryString{256}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'An arbitrary string that uniquely identifies the Physical Element and serves as key'
+ )
+
+ attributetype
+ (
+	dcimAttribute:16
+	NAME 'dcimVersion'
+	SYNTAX synDirectoryString{64}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'A string indicating the version of the PhysicalElement'
+ )
+
+ attributetype
+ (
+	dcimAttribute:17
+	NAME 'dcimNameFormat'
+	SYNTAX synDirectoryString{64}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'The System object and its derivatives are Top
+ Level Objects of CIM. They provide the scope for
+ numerous components. Having unique System keys is
+ required. A heuristic can be defined in individual
+ System subclasses to attempt to always generate the
+ same System Name Key. The NameFormat property
+ identifies how the System name was generated, using
+ the subclass" heuristic'
+ )
+
+ attributetype
+ (
+	dcimAttribute:18
+	NAME 'dcimPrimaryOwnerContact'
+	SYNTAX synDirectoryString{64}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'A string that provides information on how the
+ primary system owner can be reached (e.g. phone
+ number, email address, ...)'
+ )
+
+ attributetype
+ (
+	dcimAttribute:19
+	NAME 'dcimPrimaryOwnerName'
+	SYNTAX synDirectoryString{64}
+	SINGLE-VALUE
+	EQUALITY caseIgnoreMatch
+ DESC 'The name of the primary system owner'
+ )
+
+ attributetype
+ (
+	dcimAttribute:20
+	NAME 'dcimRoles'
+	SYNTAX synDirectoryString
+	EQUALITY caseIgnoreMatch
+ DESC 'An array (bag) of strings that specify the roles
+ this System plays in the IT-environment. Subclasses of
+ System may override this property to define explicit
+ Roles values. Alternately, a Working Group may
+ describe the heuristics, conventions and guidelines
+ for specifying Roles. For example, for an instance of
+ a networking system, the Roles property might contain
+ the string, "Switch" or "Bridge"'
+ )
+
+ attributetype
+ (
+	dcimAttribute:21
+	NAME 'dcimDedicated'
+	SYNTAX synInteger
+	EQUALITY integerMatch
+ DESC 'Enumeration indicating whether the ComputerSystem
+ is a special-purpose System (ie, dedicated to a particular use), versus being "general purpose".
+ For example, one could specify that the System is dedicated to "Print" (value=11) or acts as a "Hub" (value=8).
+ Values are 0="Not Dedicated", 1="Unknown", 2="Other", 3="Storage", 4="Router",
+ 5="Switch", 6="Layer 3 Switch", 7="Central Office Switch", 8="Hub", 9="Access Server", 10="Firewall",
+ 11="Print", 12="I/O", 13="Web Caching", 14="Management"'
+ )
+
+ objectclass
+ (
+	dcimAbstract:1
+	NAME 'dcimManagedElement'
+	SUP top
+	ABSTRACT
+	MAY ( 
+			dcimCaption $
+			dcimDescription
+		)
+ DESC 'An abstract class that provides a common
+ superclass for various managed elements'
+ )
+
+ objectclass
+ (
+	dcimAbstract:2
+	NAME 'dcimManagedSystemElement'
+	SUP dcimManagedElement
+	ABSTRACT
+	MAY (
+			dcimInstallDate $
+			dcimName $
+			dcimStatus
+		)
+ DESC 'Base class for the System Element hierarchy.
+ Examples: software components, such as files; and devices, such as disk
+ drives and controllers, and physical components such as chips and cards'
+ )
+
+ objectclass
+ (
+	dcimAbstract:3
+	NAME 'dcimPhysicalElement'
+	SUP dcimManagedSystemElement
+	ABSTRACT
+	MAY (
+			dcimCreationClassName $
+			dcimManufactureDate $
+			dcimManufacturer $
+			dcimModel $
+			dcimOtherIdentifyingInfo $
+			dcimPartNumber $
+			dcimPoweredOn $
+			dcimSKU $
+			dcimSerialNumber $
+			dcimTag $
+			dcimVersion
+		)
+ DESC 'Subclasses of PhysicalElement define any
+ component of a System that has a distinct physical identity'
+ )
+
+ objectclass
+ (
+	dcimAbstract:4
+	NAME 'dcimLogicalElement'
+	SUP dcimManagedSystemElement
+	ABSTRACT
+ DESC 'LogicalElement is a base class for all the
+ components of a System that represent logical entities,
+ such as Files, Processes, and Logical Devices'
+ )
+
+ objectclass
+ (
+	dcimAbstract:5
+	NAME 'dcimSystem'
+	SUP dcimLogicalElement
+	ABSTRACT
+	MAY (
+			dcimDedicated $
+			dcimNameFormat
+		)
+ DESC 'A System is a LogicalElement that aggregates an
+ enumerable set of Managed System Elements. The
+ aggregation operates as a functional whole. Within any
+ particular subclass of System, there is a well-defined
+ list of Managed System Element classes whose instances
+ must be aggregated'
+ )
+
+ objectclass
+ (
+	dcimAbstract:6
+	NAME 'dcimAdminDomain'
+	SUP dcimSystem 
+	ABSTRACT
+ DESC 'This is a special grouping of ManagedSystemElements. The grouping is viewed as a
+ single entity, reflecting that all of its components are administered similarly - either by the same user,
+ group of users or policy. It serves as an aggregation point to associate one or more of the following
+ elements: network devices, such as routers and switches, servers, and other resources that can be
+ accessed by end systems. This grouping of devices plays an essential role in ensuring that the same
+ administrative policy and actions are applied to all'
+ )
+
+ objectclass
+ (
+	dcimAux:1
+	NAME 'dcimAdminDomainAux'
+	SUP dcimAdminDomain 
+	AUXILIARY
+ DESC 'See parent class description'
+ )
+
+ objectclass
+ (
+	dcimStruct:1
+	NAME 'dcimAdminDomainInst'
+	SUP dcimAdminDomain 
+	STRUCTURAL
+ DESC 'See parent class description'
+ )
