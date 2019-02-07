@@ -51,6 +51,38 @@ attributetype ( 1.3.6.1.4.1.53407.2.3.15 NAME 'dcimVersion'
 	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{64}
 	SINGLE-VALUE
 	USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.53407.2.3.16 NAME 'dcimCollectionID'
+	DESC 'The identification of the Collection object. When subclassed, the CollectionID property can be overridden  to be a Key property'
+	EQUALITY caseIgnoreMatch
+	ORDERING caseIgnoreOrderingMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15
+	SINGLE-VALUE
+	USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.53407.2.3.17 NAME 'dcimVendor'
+	DESC 'The name of the Product"s supplier, or entity
+ selling the Product (the manufacturer, reseller, OEM,
+ etc.)'
+	EQUALITY caseIgnoreMatch
+	ORDERING caseIgnoreOrderingMatch
+	SUBSTR caseIgnoreSubstringsMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.15{256}
+	SINGLE-VALUE
+	USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.53407.2.3.18 NAME 'dcimWarrantyStartDate'
+	DESC 'If this Product is under warranty, the start date of the warranty'
+	EQUALITY generalizedTimeMatch
+	ORDERING generalizedTimeOrderingMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.24
+	SINGLE-VALUE
+	USAGE userApplications )
+attributetype ( 1.3.6.1.4.1.53407.2.3.19 NAME 'dcimWarrantyEndDate'
+	DESC 'If this Product is under warranty, the end date of the warranty'
+	EQUALITY generalizedTimeMatch
+	ORDERING generalizedTimeOrderingMatch
+	SYNTAX 1.3.6.1.4.1.1466.115.121.1.24
+	SINGLE-VALUE
+	USAGE userApplications )
 attributetype ( 1.3.6.1.4.1.53407.2.3.2 NAME 'dcimDescription'
 	DESC 'The Description property is a long textual description of the object'
 	EQUALITY caseIgnoreMatch
@@ -124,7 +156,19 @@ objectclass ( 1.3.6.1.4.1.53407.2.4.2 NAME 'dcimIManagedSystemElement'
 	ABSTRACT
 	MAY ( dcimInstallDate $ dcimName $ dcimStatus ) )
 objectclass ( 1.3.6.1.4.1.53407.2.4.3 NAME 'dcimIPhysicalElement'
-	DESC ''
+	DESC 'Subclasses of PhysicalElement define any component of a System that has a distinct physical identity'
 	SUP dcimIManagedSystemElement
 	ABSTRACT
-	MAY ( dcimCreationClassName $ dcimManufactureDate $ dcimManufacturer $ dcimModel $ dcimPartNumber $ dcimOtherIdentifyingInfo $ dcimSKU $ dcimSerialNumber $ dcimVersion $ dcimTag ) )
+	MAY ( dcimCreationClassName $ dcimManufactureDate $ dcimManufacturer $ dcimModel $ dcimPartNumber $ dcimOtherIdentifyingInfo $ dcimSKU $ dcimSerialNumber $ dcimVersion $ dcimTag $ dcimVendor $ dcimWarrantyEndDate $ dcimWarrantyStartDate ) )
+objectclass ( 1.3.6.1.4.1.53407.3.4.4 NAME 'dcimIMECollection'
+	DESC 'Collection of managed elements'
+	SUP dcimIManagedElement
+	ABSTRACT )
+objectclass ( 1.3.6.1.4.1.53407.3.4.5 NAME 'dcimIMSECollection'
+	DESC 'The CollectionOfMSEs object allows the grouping of 
+ManagedSystemElements for various identification
+purposes and to reduce the complexity of
+associating Settings and Configurations.'
+	SUP dcimIMECollection
+	ABSTRACT
+	MAY dcimCollectionID )
